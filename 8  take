@@ -1,0 +1,48 @@
+// 8. Реализуйте структуру телефонной книги с помощью HashMap, учитывая, что 1 человек может иметь несколько телефонов.
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
+public class Book {
+
+    public static void main(String[] args) {
+        PhoneBook phoneBook = new PhoneBook();
+
+        phoneBook.addContact("Маврина Олеся", Arrays.asList("+7 987 12 23 34"));
+        phoneBook.addContact("Петров Михаил", Arrays.asList("+7 965 32 43 54"));
+        phoneBook.addContact("Сидоров Сергей", Arrays.asList("+7 903 98 87 76", "+7 904 45 56 67"));
+
+        List<String> phone = phoneBook.getPhone("Сидоров Сергей");
+
+        System.out.println("Номера телефонов Сидорова Серегея:");
+        for (String phoneNumber : phone) {
+            System.out.println(phoneNumber);
+        }
+
+        List<String> phone_2 = phoneBook.getPhone("Маврина Олеся");
+
+        System.out.println("Номер телефона Мавриной Олеси:");
+        for (String phoneNumber : phone_2) {
+            System.out.println(phoneNumber);
+        }
+
+        List<String> phone_3 = phoneBook.getPhone("Петров Михаил");
+
+        System.out.println("Номера телефона Петрова Михаила:");
+        for (String phoneNumber : phone_3) {
+            System.out.println(phoneNumber);
+        }
+
+    }
+
+    public static class PhoneBook {
+        private HashMap<String, List<String>> BookPhones = new HashMap<>();
+        public void addContact(String name, List<String> phone) {
+            BookPhones.put(name, phone);
+        }
+        public List<String> getPhone(String name) {
+            return BookPhones.getOrDefault(name, List.of());
+        }
+    }
+}
+
