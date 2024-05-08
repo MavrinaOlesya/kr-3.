@@ -1,0 +1,27 @@
+import java.util.Stack;
+
+public class TwoStack {
+    public static void main(String[] args) {
+        Stack<Integer> stack_1 = new Stack<>();
+        stack_1.push(10);
+        stack_1.push(15);
+        stack_1.push(20);
+        stack_1.push(25);
+        stack_1.push(30);
+
+        Stack<Integer> stack_2 = new Stack<>();
+        stack_2.push(100);
+        stack_2.push(150);
+        stack_2.push(200);
+        stack_2.push(250);
+        stack_2.push(300);
+
+        Stack<Integer> change = stack_1;
+        stack_1 = stack_2;
+        stack_2 = change;
+
+        System.out.println("Стек 1 - " + stack_1);
+        System.out.println("Стек 2 - " + stack_2);
+    }
+}
+
